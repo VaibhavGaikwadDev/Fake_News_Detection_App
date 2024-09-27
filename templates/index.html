@@ -1,0 +1,80 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #343a40; /* Dark background */
+            color: #f8f9fa; /* Light text */
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            background-color: #212529; /* Darker card background */
+            border: none; /* Remove border for a cleaner look */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Soft shadow */
+        }
+        .btn-custom {
+            background-color: #007bff; /* Custom blue button */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 25px; /* Rounded button */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for button */
+        }
+        .btn-custom:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        textarea {
+            background-color: #343a40; /* Dark background for textarea */
+            color: #f8f9fa; /* Light text color */
+            border: 1px solid #495057; /* Light border */
+            border-radius: 10px; /* Rounded corners */
+        }
+        textarea:focus {
+            border-color: #007bff; /* Blue border on focus */
+            box-shadow: none; /* Remove box shadow */
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4" style="max-width: 600px; width: 100%;">
+            <div class="card-body text-center">
+                <h1>Fake News Detection</h1>
+                <form action="/predict" method="post">
+                    <div class="form-group">
+                        <label for="news">Enter news headline:</label>
+                        <textarea name="news" rows="4" class="form-control" id="news"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-block mt-3">Check</button>
+                </form>
+                {% if prediction_text %}
+                    <h2 class="mt-4">{{ prediction_text }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (Optional for interactivity) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
